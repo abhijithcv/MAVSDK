@@ -36,3 +36,18 @@ if(NOT MSVC)
 else()
     target_compile_options(mavlink_stats PRIVATE -W2)
 endif()
+
+add_executable(sensor_rate_monitor
+    sensor_rate_monitor.cpp
+)
+
+target_link_libraries(sensor_rate_monitor
+    PRIVATE
+    MAVSDK::mavsdk
+)
+
+if(NOT MSVC)
+    target_compile_options(sensor_rate_monitor PRIVATE -Wall -Wextra)
+else()
+    target_compile_options(sensor_rate_monitor PRIVATE -W2)
+endif()
